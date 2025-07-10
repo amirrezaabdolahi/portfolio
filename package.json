@@ -1,16 +1,16 @@
 {
-  "homepage": "https://amirrezaabdolahi.github.io/portfolio",
-  "name": "portfolio",
+  "name": "my-app",
+  "homepage": "https://amirrezaabdolahi.github.io/portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
-    
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
