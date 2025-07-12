@@ -1,80 +1,134 @@
-// AnimatedTextPage.jsx
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const text = "AMIRREZA ABDOLLAHI";
-
-// Each letter will bounce up into view
-const letterAnimation = {
-  hidden: { y: 100, opacity: 0 },
-  visible: (i) => ({
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: i * 0.1,
-      type: "spring",
-      stiffness: 500,
-      damping: 25,
-      bounce: 0.5,
-    },
-  }),
-};
-
 const AnimatedTextPage = () => {
-  const [showPage, setShowPage] = useState(true);
+  const [showTexts, setShowTexts] = useState(true);
+  const [showBackground, setShowBackground] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowPage(false);
-    }, 3000); // Disappear whole page after 4s
+      setShowTexts(false);
+    }, 3500); // Hide all texts after 4 seconds
 
-    return () => clearTimeout(timer);
+    const bgTimer = setTimeout(() => {
+      setShowBackground(false);
+    }, 3500); // Background fades after texts disappear
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(bgTimer);
+    };
   }, []);
 
   return (
-    <AnimatePresence>
-      {showPage && (
-        <motion.div
-          initial={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 5 }} // Increased zoom to 5x
-          transition={{ duration: 1 }}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            backgroundColor: "black",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 9999,
-          }}
-        >
-          <div style={{ display: "flex", gap: "5px" }}>
-            {text.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                custom={i}
-                variants={letterAnimation}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0, y: -50 }}
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        backgroundColor: showBackground ? "black" : "transparent",
+        transition: "background-color 0.4s ease",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9999,
+        pointerEvents: "none",
+        gap: "1.5rem",
+        padding: "0 20px",
+        textAlign: "center",
+      }}
+    >
+      <AnimatePresence>
+        {showTexts && (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.3 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.h1
+                key="welcome"
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.5,
+                  duration: 1.5,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
                 style={{
                   color: "white",
                   fontWeight: "bold",
-                  fontSize: "clamp(1.3rem, 5vw, 4rem)",
-                  borderBottom : '1px solid yellow',
-                  userSelect : 'none'
+                  fontSize: "clamp(1.5rem, 5vw, 4rem)",
+                  margin: 0,
+                  userSelect: "none",
                 }}
               >
-                {char}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+                Welcome To My
+              </motion.h1>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "4rem",
+                  marginTop: "0.5rem",
+                }}
+              >
+                <motion.h2
+                  key="portfolio"
+                  className="gradient-text-color"
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.8,
+                    duration: 1.5,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15,
+                  }}
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "clamp(1.2rem, 4vw, 3rem)",
+                    margin: 0,
+                    userSelect: "none",
+                    textAlign: "center",
+                  }}
+                >
+                  Portfolio
+                </motion.h2>
+
+                <motion.h2
+                  key="website"
+                  className="gradient-text-color-2"
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: 1,
+                    duration: 1.5,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15,
+                  }}
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "clamp(1.2rem, 4vw, 3rem)",
+                    margin: 0,
+                    userSelect: "none",
+                    textAlign: "center",
+                  }}
+                >
+                  Website
+                </motion.h2>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

@@ -1,5 +1,3 @@
-
-
 const generateMatrix = () => {
   const columns = 100;
   const symbols = [];
@@ -18,6 +16,7 @@ const generateMatrix = () => {
           left: `${left}vw`,
           animationDelay: `${delay}s`,
           animationDuration: `${duration}s`,
+          userSelect: "none",
         }}
       >
         {binary}
