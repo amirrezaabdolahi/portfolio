@@ -1,1 +1,0 @@
-.matrix{position:fixed;top:0;left:0;width:100vw;height:100vh;overflow:hidden;pointer-events:none;z-index:-1}.symbol{position:absolute;top:-1em;animation:drop 4s linear infinite;font-size:1.2em;opacity:.7}@keyframes drop{0%{transform:translateY(-100%);opacity:0}30%{opacity:1}to{transform:translateY(100vh);opacity:0}}
