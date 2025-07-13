@@ -48,3 +48,15 @@ body {
   color: #131313;
   background: #e7e5e4;
 }
+
+.section-title {
+  background: #0087cf;
+  background: linear-gradient(to right, #0087cf 12%, #a200cf 72%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 2.5rem !important;
+  width: max-content;
+  margin: 10rem auto 3rem auto !important;
+  font-weight: bold !important;
+}
