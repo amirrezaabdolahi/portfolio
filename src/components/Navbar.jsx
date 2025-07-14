@@ -8,13 +8,14 @@ const Navbar = () => {
         width: 1,
         height: 70,
         backgroundColor: "rgba(0 , 0, 0,0.1)",
-        backdropFilter: "blur(0.2rem)",
+        backdropFilter: "blur(0.3rem)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         gap: 4,
         position : "fixed",
-        top : 0
+        top : 0,
+        zIndex : 999
       }}
     >
       <Typography

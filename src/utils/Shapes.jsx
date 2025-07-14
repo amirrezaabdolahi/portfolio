@@ -31,8 +31,8 @@ export default function PathDrawing() {
 
   return (
     <motion.svg
-      width="600"
-      height="600"
+      width="100%"
+      height="100%"
       viewBox="0 0 600 600"
       initial="hidden"
       animate={startAnim ? "visible" : "hidden"}
