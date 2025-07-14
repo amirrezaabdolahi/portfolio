@@ -34,6 +34,7 @@ import {
 import GesturesBox from "./utils/GesturesBox";
 import icons from "./utils/icons";
 import LoadingThreeDotsPulse from "./pages/Loading";
+import { useNavigate } from "react-router-dom";
 
 function a11yProps(index) {
   return {
@@ -44,6 +45,8 @@ function a11yProps(index) {
 
 function App() {
   const [value, setValue] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -244,21 +247,34 @@ function App() {
                 alignItems: "center",
               }}
             >
-              <IconButton size="large">
-                <GitHub />
-              </IconButton>
-              <IconButton size="large">
-                <Instagram />
-              </IconButton>
-              <IconButton size="large">
-                <Facebook />
-              </IconButton>
-              <IconButton size="large">
-                <Telegram />
-              </IconButton>
-              <IconButton size="large">
-                <LinkedIn />
-              </IconButton>
+              <a href="https://github.com/amirrezaabdolahi" target="_blank">
+                <IconButton size="large">
+                  <GitHub />
+                </IconButton>
+              </a>
+              <a
+                href="https://www.instagram.com/amireza.abdolahi86/"
+                target="_blank"
+              >
+                <IconButton size="large">
+                  <Instagram />
+                </IconButton>
+              </a>
+              <a href="https://facebook.com" target="_blank">
+                <IconButton size="large">
+                  <Facebook />
+                </IconButton>
+              </a>
+              <a href="https://t.me/@AmirEnzeva" target="_blank">
+                <IconButton size="large">
+                  <Telegram />
+                </IconButton>
+              </a>
+              <a href="https://linkedin.com" target="_blank">
+                <IconButton size="large">
+                  <LinkedIn />
+                </IconButton>
+              </a>
             </Box>
           </ScrollShow>
         </MainLayout>
